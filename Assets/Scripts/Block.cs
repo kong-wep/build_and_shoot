@@ -14,9 +14,9 @@ public class Block : MonoBehaviour
     float originalSize;
 
     // Movement
-	private bool isPressed = false;
+	// private bool isPressed = false;
     Rigidbody2D rigidbody2d;
-    
+    // private bool built = false;
     void Start()
     {
         originalSize = mask.rectTransform.rect.width;
@@ -28,15 +28,12 @@ public class Block : MonoBehaviour
     }
     void FixedUpdate()
     {
-		if (isPressed)
-		{
-			Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = mousePos;
-		}
     }
 
 	void OnCollisionEnter2D (Collision2D colInfo)
 	{
+        if(PlayerController.instance.isBuilerRound)
+            return;
 		if (colInfo.relativeVelocity.magnitude > damageThreshold)
 		{
             currentHealth-=colInfo.relativeVelocity.magnitude;
@@ -46,24 +43,9 @@ public class Block : MonoBehaviour
 			Die();
         }
 	}
-    
-	void OnMouseDown ()
-	{
-        if(PlayerController.instance.isBuilerRound){
-		    isPressed = true;
-        }
-	}
-
-	void OnMouseUp ()
-	{
-        if(PlayerController.instance.isBuilerRound){
-		    isPressed = false;
-        }
-	}
 
 	void Die ()
 	{
-		// Instantiate(deathEffect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
 
