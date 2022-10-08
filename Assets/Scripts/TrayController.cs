@@ -7,29 +7,39 @@ public class TrayController : MonoBehaviour
     static int MAX_BLOCKS = 10;
 
     public GameObject blockPrefab;
+    
+    RectTransform rectTransform;
+
     GameObject[] blocks = new GameObject[MAX_BLOCKS];
-    int block_count = 0;
-    // Start is called before the first frame update
+    int blockCount = 0;
+    
     void Start()
     {
-        CreateBlock();
+        rectTransform = GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButtonDown(1)){
-            CreateBlock();
+            FillBlocks();
         }
     }
-    int CreateBlock(){ // return index or -1
+    void FillBlocks(){
+        int blockNum = 3;
+        float length = rectTransform.sizeDelta.x;
+        for(int i=0;i<blockNum;i++){
+            Vector2 newPos = new Vector2(transform.position.x+(length*(i+1)/(blockNum+1)),transform.position.y);
+            CreateBlock(newPos);
+        }
+    }
+
+    int CreateBlock(Vector2 pos){ // return index or -1
         // TODO move other blocks here
-        if(block_count >= MAX_BLOCKS)
+        if(blockCount >= MAX_BLOCKS)
             return -1;
-        Vector2 pos = new Vector2(0,0);
         GameObject block = Instantiate(blockPrefab, pos, Quaternion.identity,transform);
-        blocks[block_count] = block;
-        block_count++;
-        return block_count-1;
+        blocks[blockCount] = block;
+        blockCount++;
+        return blockCount-1;
     }
 }

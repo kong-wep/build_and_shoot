@@ -19,6 +19,6 @@ public class UIRound : MonoBehaviour
     }
     public void SetRound(int value)
     {
-        TMP_text.text = string.Format("Round {0}",value);
+        TMP_text.text = string.Format("Round {0}",value+1);
     }
 }

@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
+        
     }
 
     void Update()
@@ -21,13 +22,14 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void changeRound(int value){
+    public void changeRound(int value){
         if(value % 2 == 0){
             isBuilerRound = true;
         }
         else{
             isBuilerRound = false;
         }
+        round = value;
         UIRound.instance.SetRound(value);
     }
 }

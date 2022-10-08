@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UIBlock : MonoBehaviour,IDragHandler 
 {
-    public bool isDraggable = true;
+    public bool isDraggable = false;
     public GameObject blockPrefab;
     bool isDragging = false;
 
