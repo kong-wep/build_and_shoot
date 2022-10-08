@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject ballPrefab;
 	public GameObject avatarPrefab;
     public GameObject winnerPanel;
+    // public TextMeshProUGUI winnerText;
     static int MAX_BALLS = 5;
     int ballCount = 0;
     GameObject[] balls = new GameObject[MAX_BALLS];
@@ -41,6 +42,10 @@ public class PlayerController : MonoBehaviour
             winnerPanel.active = true;
             return;
         }
+        // if(avatar == null){
+        //     winnerPanel.active = true;
+        //     return;
+        // }
         round = value;
         if(round % 2 == 0){
             isBuilderRound = true;
