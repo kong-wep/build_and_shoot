@@ -8,6 +8,7 @@ public class AvatarController : MonoBehaviour
     public int maxHealth = 40;
 	public float currentHealth = 40f;
 	float damageThreshold = 2f;
+    public Vector2 spawn = new Vector2(0,0);
 
     // Movement
     Rigidbody2D rigidbody2d;
@@ -40,4 +41,9 @@ public class AvatarController : MonoBehaviour
 		// Instantiate(deathEffect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}
+    public void Reset(){
+        currentHealth = (float)maxHealth;
+        transform.position = spawn;
+        UIHealth.instance.SetValue(currentHealth/maxHealth);
+    }
 }

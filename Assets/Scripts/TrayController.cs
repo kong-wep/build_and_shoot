@@ -11,8 +11,11 @@ public class TrayController : MonoBehaviour
     
     RectTransform rectTransform;
 
-    GameObject[] blocks = new GameObject[MAX_BLOCKS];
+    GameObject[] blocks = new GameObject[MAX_BLOCKS+10];
     int blockCount = 0;
+
+    GameObject[] gameBlocks = new GameObject[MAX_BLOCKS*2];
+    int gameBlockCount = 0;
     
     void Start()
     {
@@ -26,11 +29,12 @@ public class TrayController : MonoBehaviour
         if(blockCount <= 0){
             return;
         }
-        GameObject BlockObject = blocks[blockCount-1];
+        GameObject blockObject = blocks[blockCount-1];
         blockCount-=1;
-        BlockObject.GetComponent<Image>().color = new Color(1,1,1,1);
-        BlockObject.GetComponent<UIBlock>().isDraggable = true;
-        BlockObject.GetComponent<UIBlock>().tray = this;
+        UIBlock blockScript = blockObject.GetComponent<UIBlock>();
+        blockObject.GetComponent<Image>().color = new Color(1,1,1,1);
+        blockScript.isDraggable = true;
+        blockScript.tray = this;
     }
     public void FillBlocks(){
         int blockNum = 3;
@@ -50,5 +54,26 @@ public class TrayController : MonoBehaviour
         blocks[blockCount] = block;
         blockCount++;
         return blockCount-1;
+    }
+
+    public void addGameBlock(GameObject block){
+        gameBlocks[gameBlockCount] = block;
+        gameBlockCount++;
+    }
+
+    public void DeleteAll(){
+        foreach (Transform child in transform) {
+            GameObject.Destroy(child.gameObject);
+        }
+        for(int i=0;i<blockCount;i++){
+		    Destroy(blocks[i]);
+            blocks[i] = null;
+        }
+        for(int i=0;i<gameBlockCount;i++){
+		    Destroy(gameBlocks[i]);
+            gameBlocks[i] = null;
+        }
+        blockCount = 0;
+        gameBlockCount = 0;
     }
 }

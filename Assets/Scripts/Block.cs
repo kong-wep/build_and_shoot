@@ -14,9 +14,9 @@ public class Block : MonoBehaviour
     float originalSize;
 
     // Movement
-	// private bool isPressed = false;
     Rigidbody2D rigidbody2d;
-    // private bool built = false;
+    public TrayController tray;
+
     void Start()
     {
         originalSize = mask.rectTransform.rect.width;

@@ -26,6 +26,7 @@ public class UIBlock : MonoBehaviour,IDragHandler
                 GameObject block = Instantiate(
                     blockPrefab, pos, Quaternion.identity);
 		        Destroy(gameObject);
+                tray.addGameBlock(block);
                 tray.GiveBlock();
             }
         }
