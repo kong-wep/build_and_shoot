@@ -29,12 +29,16 @@ public class Ball : MonoBehaviour
 
 	void OnMouseDown ()
 	{
+		if(PlayerController.instance.isBuilerRound)
+			return;
 		isPressed = true;
 		rb.isKinematic = true;
 	}
 
 	void OnMouseUp ()
 	{
+		if(PlayerController.instance.isBuilerRound)
+			return;
 		isPressed = false;
 		rb.isKinematic = false;
 

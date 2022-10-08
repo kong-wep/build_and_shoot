@@ -49,14 +49,16 @@ public class Block : MonoBehaviour
     
 	void OnMouseDown ()
 	{
-        Debug.Log("down");
-		isPressed = true;
+        if(PlayerController.instance.isBuilerRound){
+		    isPressed = true;
+        }
 	}
 
 	void OnMouseUp ()
 	{
-        Debug.Log("up");
-		isPressed = false;
+        if(PlayerController.instance.isBuilerRound){
+		    isPressed = false;
+        }
 	}
 
 	void Die ()
