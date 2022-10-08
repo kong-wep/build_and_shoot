@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrayController : MonoBehaviour
 {
@@ -24,6 +25,16 @@ public class TrayController : MonoBehaviour
             FillBlocks();
         }
     }
+    public void GiveBlock(){
+        if(blockCount <= 0){
+            return;
+        }
+        GameObject BlockObject = blocks[blockCount-1];
+        blockCount-=1;
+        BlockObject.GetComponent<Image>().color = new Color(1,1,1,1);
+        BlockObject.GetComponent<UIBlock>().isDraggable = true;
+        BlockObject.GetComponent<UIBlock>().tray = this;
+    }
     void FillBlocks(){
         int blockNum = 3;
         float length = rectTransform.sizeDelta.x;
@@ -31,6 +42,7 @@ public class TrayController : MonoBehaviour
             Vector2 newPos = new Vector2(transform.position.x+(length*(i+1)/(blockNum+1)),transform.position.y);
             CreateBlock(newPos);
         }
+        GiveBlock();
     }
 
     int CreateBlock(Vector2 pos){ // return index or -1

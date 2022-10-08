@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UIBlock : MonoBehaviour,IDragHandler 
 {
+    public TrayController tray;
     public bool isDraggable = false;
     public GameObject blockPrefab;
     bool isDragging = false;
@@ -17,7 +18,7 @@ public class UIBlock : MonoBehaviour,IDragHandler
     void Update()
     {
         if(Input.GetMouseButtonUp(0)){
-            if(isDragging){
+            if(isDragging && PlayerController.instance.isBuilderRound){
                 // release
                 isDraggable = false;
                 isDragging = false;
@@ -25,13 +26,14 @@ public class UIBlock : MonoBehaviour,IDragHandler
                 GameObject block = Instantiate(
                     blockPrefab, pos, Quaternion.identity);
 		        Destroy(gameObject);
+                tray.GiveBlock();
             }
         }
         
     }
     public void OnDrag (PointerEventData eventData)
     {
-        if(isDraggable){
+        if(isDraggable && PlayerController.instance.isBuilderRound){
             this.transform.position += (Vector3)eventData.delta;
             isDragging = true;
         }

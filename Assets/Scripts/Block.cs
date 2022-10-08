@@ -32,7 +32,7 @@ public class Block : MonoBehaviour
 
 	void OnCollisionEnter2D (Collision2D colInfo)
 	{
-        if(PlayerController.instance.isBuilerRound)
+        if(PlayerController.instance.isBuilderRound)
             return;
 		if (colInfo.relativeVelocity.magnitude > damageThreshold)
 		{

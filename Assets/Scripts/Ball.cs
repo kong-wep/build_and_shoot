@@ -29,7 +29,7 @@ public class Ball : MonoBehaviour
 
 	void OnMouseDown ()
 	{
-		if(PlayerController.instance.isBuilerRound)
+		if(PlayerController.instance.isBuilderRound)
 			return;
 		isPressed = true;
 		rb.isKinematic = true;
@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
 
 	void OnMouseUp ()
 	{
-		if(PlayerController.instance.isBuilerRound)
+		if(PlayerController.instance.isBuilderRound)
 			return;
 		isPressed = false;
 		rb.isKinematic = false;
@@ -50,18 +50,9 @@ public class Ball : MonoBehaviour
 		yield return new WaitForSeconds(releaseTime);
 
 		GetComponent<SpringJoint2D>().enabled = false;
-		// this.enabled = false;
+		this.enabled = false;
 
-		yield return new WaitForSeconds(2f);
-
-		if (nextBall != null)
-		{
-			nextBall.SetActive(true);
-		} else
-		{
-			// Enemy.EnemiesAlive = 0;
-			// SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-		}
+		// yield return new WaitForSeconds(2f);
 	
 	}
 }

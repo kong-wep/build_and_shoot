@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController instance { get; private set; }
     public int round = 0; // even round build, odd round shoot
-    public bool isBuilerRound = true;
+    public bool isBuilderRound = true;
     
     void Awake()
     {
@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        
+        UIRound.instance.SetRound(0);
     }
 
     void Update()
@@ -23,13 +23,14 @@ public class PlayerController : MonoBehaviour
     }
 
     public void changeRound(int value){
-        if(value % 2 == 0){
-            isBuilerRound = true;
+        round = value;
+        if(round % 2 == 0){
+            isBuilderRound = true;
         }
         else{
-            isBuilerRound = false;
+            isBuilderRound = false;
+            // gen new ball
         }
-        round = value;
-        UIRound.instance.SetRound(value);
+        UIRound.instance.SetRound(round);
     }
 }
