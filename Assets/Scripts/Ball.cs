@@ -10,10 +10,12 @@ public class Ball : MonoBehaviour
 	public float releaseTime = .15f;
 	public float maxDragDistance = 2f;
 
-	public GameObject nextBall;
-
 	private bool isPressed = false;
-
+	LineRenderer line;
+	void Start(){
+		line = GetComponent<LineRenderer>();
+		line.enabled = true;
+	}
 	void Update ()
 	{
 		if (isPressed)
@@ -25,6 +27,8 @@ public class Ball : MonoBehaviour
 			else
 				rb.position = mousePos;
 		}
+		line.SetPosition(0,transform.position);
+		line.SetPosition(1,hook.position);
 	}
 
 	void OnMouseDown ()
@@ -50,6 +54,7 @@ public class Ball : MonoBehaviour
 		yield return new WaitForSeconds(releaseTime);
 
 		GetComponent<SpringJoint2D>().enabled = false;
+		line.enabled = false;
 		this.enabled = false;
 
 		// yield return new WaitForSeconds(2f);

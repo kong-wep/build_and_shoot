@@ -21,9 +21,6 @@ public class TrayController : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(1)){
-            FillBlocks();
-        }
     }
     public void GiveBlock(){
         if(blockCount <= 0){
@@ -35,7 +32,7 @@ public class TrayController : MonoBehaviour
         BlockObject.GetComponent<UIBlock>().isDraggable = true;
         BlockObject.GetComponent<UIBlock>().tray = this;
     }
-    void FillBlocks(){
+    public void FillBlocks(){
         int blockNum = 3;
         float length = rectTransform.sizeDelta.x;
         for(int i=0;i<blockNum;i++){

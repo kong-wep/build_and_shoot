@@ -7,7 +7,7 @@ public class AvatarController : MonoBehaviour
     // Health
     public int maxHealth = 40;
 	public float currentHealth = 40f;
-	float damageThreshold = 5f;
+	float damageThreshold = 2f;
 
     // Movement
     Rigidbody2D rigidbody2d;
@@ -24,9 +24,12 @@ public class AvatarController : MonoBehaviour
     
 	void OnCollisionEnter2D (Collision2D colInfo)
 	{
+        if(PlayerController.instance.isBuilderRound)
+            return;
 		if (colInfo.relativeVelocity.magnitude > damageThreshold)
 		{
             currentHealth-=colInfo.relativeVelocity.magnitude;
+            UIHealth.instance.SetValue(currentHealth/maxHealth);
 		}
         if(currentHealth<0){
 			Die();
