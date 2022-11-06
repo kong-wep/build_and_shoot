@@ -13467,7 +13467,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -13798,7 +13798,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &916149732
 MonoBehaviour:
@@ -13820,6 +13820,7 @@ MonoBehaviour:
   ballPrefab: {fileID: 1216439594103592016, guid: f882c25ffb833e34ebd2241c52d751fd, type: 3}
   avatarPrefab: {fileID: 5369168168079050022, guid: 7c3027c8b896f95429e286a0156b5888, type: 3}
   winnerPanel: {fileID: 2093656624}
+  winnerText: {fileID: 1012345561}
 --- !u!1 &972336774
 GameObject:
   m_ObjectHideFlags: 0
@@ -14807,7 +14808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.78035855, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.7803586, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15699,7 +15700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5369168168079050029, guid: 7c3027c8b896f95429e286a0156b5888, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5369168168079050029, guid: 7c3027c8b896f95429e286a0156b5888, type: 3}
       propertyPath: m_LocalPosition.x
