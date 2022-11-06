@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1216439594103592021}
   - component: {fileID: 1216439594103591978}
   - component: {fileID: 1024282446353398861}
+  - component: {fileID: 5246199926122248990}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -169,7 +170,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216439594103592016}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -261,3 +262,15 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &5246199926122248990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216439594103592016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc667bdf2f4d79448d780ccd5017dae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
