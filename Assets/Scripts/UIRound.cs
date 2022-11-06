@@ -30,7 +30,7 @@ public class UIRound : MonoBehaviour
             }
             else{
                 if(i % 2 == 0){
-                    indicators[i].color = new Color(1,1,0,1); //yellow
+                    indicators[i].color = new Color(1,0.7803586f,0,1); //yellow
                 }
                 else{
                     indicators[i].color = new Color(1,0,0,1); // red

@@ -38,6 +38,7 @@ public class AvatarController : MonoBehaviour
 	}
 	void Die ()
 	{
+        PlayerController.instance.avatarDies();
 		// Instantiate(deathEffect, transform.position, Quaternion.identity);
 		Destroy(gameObject);
 	}

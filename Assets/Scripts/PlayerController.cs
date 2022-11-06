@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,14 +11,14 @@ public class PlayerController : MonoBehaviour
     public bool isBuilderRound = true;
     public GameObject hook;
     public TrayController tray;
-    static int MAX_ROUNDS = 10;
+    static int MAX_ROUNDS = 9;
     
     public AvatarController avatar;
 
 	public GameObject ballPrefab;
 	public GameObject avatarPrefab;
     public GameObject winnerPanel;
-    // public TextMeshProUGUI winnerText;
+    public TextMeshProUGUI winnerText;
     static int MAX_BALLS = 5;
     int ballCount = 0;
     GameObject[] balls = new GameObject[MAX_BALLS];
@@ -39,13 +40,11 @@ public class PlayerController : MonoBehaviour
 
     public void changeRound(int value){
         if(value > MAX_ROUNDS){
+            UIRound.instance.SetRound(MAX_ROUNDS);
+            winnerText.text = string.Format("Builder!");
             winnerPanel.active = true;
             return;
         }
-        // if(avatar == null){
-        //     winnerPanel.active = true;
-        //     return;
-        // }
         round = value;
         if(round % 2 == 0){
             isBuilderRound = true;
@@ -62,10 +61,17 @@ public class PlayerController : MonoBehaviour
         }
         UIRound.instance.SetRound(round);
     }
+    public void avatarDies(){
+        avatar = null;
+        winnerPanel.active = true;
+        winnerText.text = string.Format("Shooter!");
+        return;
+    }
     public void replay(){
         round = 0;
         UIRound.instance.SetRound(0);
         winnerPanel.active = false;
+        isBuilderRound = true;
         DeleteAll();
         tray.DeleteAll();
         tray.FillBlocks();
@@ -75,6 +81,7 @@ public class PlayerController : MonoBehaviour
         else{
             GameObject av = Instantiate(avatarPrefab, transform.position, Quaternion.identity);
             av.GetComponent<AvatarController>().Reset();
+            avatar = av.GetComponent<AvatarController>();
         }
     }
     void DeleteAll(){
